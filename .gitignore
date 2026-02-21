@@ -1,0 +1,33 @@
+# Neo4j (älä versionoi tietokantaa tai lokeja)
+data/
+databases/
+dbms/
+logs/
+metrics/
+import/
+plugins/
+transactions/
+backup/
+
+# Neo4j Desktop projektikansiot
+.neo4j/
+.graphdb/
+
+# Ympäristömuuttujat
+.env
+
+# OS-kohtaiset turhat tiedostot
+.DS_Store
+Thumbs.db
+
+# Editorien asetukset
+.vscode/
+.idea/
+
+# Node / npm (jos joskus lisäät backendin)
+node_modules/
+npm-debug.log*
+
+# Python (varmuuden vuoksi)
+__pycache__/
+*.pyc
