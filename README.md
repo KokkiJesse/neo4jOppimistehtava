@@ -9,5 +9,7 @@ Neo4j tietokanta pelikirjastosovellukselle.
 **Testaus:**
 
 1. Kloonaa repositorio itsellesi ja siirry hakemistoon.
-2. Käynnistä docker: 'docker compose up -d'
-3. Mene osoitteeseen: 'http://localhost:7474/browser/'
+2. Käynnistä docker: `docker compose up -d`
+3. Mene selaimella osoitteeseen: `http://localhost:7474/browser/`
+4. Luo data `create_data.cypher` tiedoston sisällöllä selaimessa tai komentorivillä ajamalla `docker exec -i neo4j cypher-shell -u neo4j -p password < create_data.cypher` projektin hakemistossa
+5. Voit testata tietokantaa ajamalla `queries.cypher` tiedoston kyselyitä selaimessa.
