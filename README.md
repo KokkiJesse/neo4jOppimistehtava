@@ -4,7 +4,7 @@ Neo4j tietokanta pelikirjastosovellukselle.
 
 ## Pelikirjasto
 
-**Kuvaus:** Tietokanta näyttää käyttäjiä, pelejä, genrejä ja alustoja,s ekä niiden välisiä suhteita. Neo4j valittiin kantaa varten, koska sovelluksen keskiössä ovat käyttäjien, pelejen ja yms. suhteet. Pelikirjastossa ei ole olennaista yksittäinen tieto, vaan miten eri kohteet liittyvät toisiinsa. Tietokannan avulla on mahdollista selvittää esim. ketkä käyttäjät voisivat pelata yhdessä.
+**Kuvaus:** Tietokanta näyttää käyttäjiä, pelejä, genrejä ja niiden välisiä suhteita. Neo4j valittiin kantaa varten, koska sovelluksen keskiössä ovat käyttäjien, pelejen ja yms. suhteet. Pelikirjastossa ei ole olennaista yksittäinen tieto, vaan miten eri kohteet liittyvät toisiinsa. Tietokannan avulla on mahdollista selvittää esim. ketkä käyttäjät voisivat pelata yhdessä.
 
 **Testaus:**
 
