@@ -3,75 +3,66 @@ CREATE CONSTRAINT peli_nimi_unique IF NOT EXISTS
 FOR (p:Peli)
 REQUIRE p.nimi IS UNIQUE;
 
-// käyttäjän id on uniikki
-CREATE CONSTRAINT kayttaja_id_unique IF NOT EXISTS
-FOR (k:Kayttaja)
-REQUIRE k.id IS UNIQUE;
 
-
+// Luo kaikki solmut ja suhteet
+CREATE
 // Käyttäjät
-CREATE (jesse:Kayttaja {id: 1, nimi:"Jesse", ika:26});
-CREATE (jonne:Kayttaja {id: 2, nimi:"Jonne", ika:30});
-CREATE (janne:Kayttaja {id: 3, nimi:"Janne", ika:22});
-CREATE (liisa:Kayttaja {id: 4, nimi:"Liisa", ika:24});
+(jesse:Kayttaja {nimi:"Jesse", ika:26}),
+(jonne:Kayttaja {nimi:"Jonne", ika:30}),
+(janne:Kayttaja {nimi:"Janne", ika:22}),
+(liisa:Kayttaja {nimi:"Liisa", ika:24}),
 
 // Pelit
-CREATE (wow:Peli {nimi:"World of Warcraft", vuosi:2004});
-CREATE (lbp:Peli {nimi:"Little Big Planet", vuosi:2008});
-CREATE (minecraft:Peli {nimi:"Minecraft", vuosi:2009});
-CREATE (megabonk:Peli {nimi:"MEGABONK", vuosi:2025});
-CREATE (cotl:Peli {nimi:"Cult of the Lamb", vuosi:2022});
+(wow:Peli {nimi:"World of Warcraft"}),
+(lbp:Peli {nimi:"Little Big Planet"}),
+(minecraft:Peli {nimi:"Minecraft"}),
+(megabonk:Peli {nimi:"MEGABONK"}),
+(cotl:Peli {nimi:"Cult of the Lamb"}),
+(overwatch:Peli {nimi:"Overwatch"}),
+(marvelRivals:Peli {nimi:"Marvel Rivals"}),
 
 // Genret
-CREATE (mmorpg:Genre {nimi:"MMORPG"});
-CREATE (platformer:Genre {nimi:"Platformer"});
-CREATE (sandbox:Genre {nimi:"Sandbox"});
-CREATE (roguelike:Genre {nimi:"Roguelike"});
+(mmorpg:Genre {nimi:"MMORPG"}),
+(platformer:Genre {nimi:"Platformer"}),
+(sandbox:Genre {nimi:"Sandbox"}),
+(roguelike:Genre {nimi:"Roguelike"}),
+(heroShooter:Genre {nimi:"Hero Shooter"}),
+(survival:Genre {nimi:"Survival"}),
+(multiplayer:Genre {nimi:"Multiplayer"}),
 
-
-// Alustat
-CREATE (pc:Alusta {nimi:"PC"});
-CREATE (ps:Alusta {nimi:"PlayStation"});
-CREATE (xbox:Alusta {nimi:"Xbox"});
-CREATE (nintendo:Alusta {nimi:"Nintendo Switch"});
-
-// Relaatiot
-CREATE
+// Käyttäjien ja pelien väliset suhteet
 (jesse)-[:OMISTAA]->(wow),
-(jesse)-[:PELAA]->(wow),
 (jesse)-[:OMISTAA]->(minecraft),
 (jesse)-[:OMISTAA]->(lbp),
 (jesse)-[:OMISTAA]->(megabonk),
 (jesse)-[:OMISTAA]->(cotl),
+(jesse)-[:OMISTAA]->(overwatch),
+(jesse)-[:OMISTAA]->(marvelRivals),
 
 (jonne)-[:OMISTAA]->(lbp),
-(jonne)-[:PELAA]->(lbp),
 (jonne)-[:OMISTAA]->(megabonk),
-(jonne)-[:PELAA]->(megabonk),
+(jonne)-[:OMISTAA]->(overwatch),
 
 (janne)-[:OMISTAA]->(minecraft),
-(janne)-[:PELAA]->(minecraft),
 (janne)-[:OMISTAA]->(cotl),
-(janne)-[:PELAA]->(cotl),
+(janne)-[:OMISTAA]->(marvelRivals),
 
 (liisa)-[:OMISTAA]->(megabonk),
-(liisa)-[:PELAA]->(megabonk),
 (liisa)-[:OMISTAA]->(cotl),
+(liisa)-[:OMISTAA]->(marvelRivals),
 
+// Pelien ja genrejen väliset suhteet
 (wow)-[:KUULUU]->(mmorpg),
+(wow)-[:KUULUU]->(multiplayer),
 (lbp)-[:KUULUU]->(platformer),
+(lbp)-[:KUULUU]->(multiplayer),
 (minecraft)-[:KUULUU]->(sandbox),
+(minecraft)-[:KUULUU]->(survival),
+(minecraft)-[:KUULUU]->(multiplayer),
 (megabonk)-[:KUULUU]->(roguelike),
+(megabonk)-[:KUULUU]->(survival),
 (cotl)-[:KUULUU]->(roguelike),
-
-(wow)-[:SAATAVILLA]->(pc),
-(lbp)-[:SAATAVILLA]->(ps),
-(megabonk)-[:SAATAVILLA]->(pc),
-(cotl)-[:SAATAVILLA]->(pc),
-(cotl)-[:SAATAVILLA]->(xbox),
-(cotl)-[:SAATAVILLA]->(ps),
-(cotl)-[:SAATAVILLA]->(nintendo),
-(minecraft)-[:SAATAVILLA]->(pc),
-(minecraft)-[:SAATAVILLA]->(xbox),
-(minecraft)-[:SAATAVILLA]->(ps),
-(minecraft)-[:SAATAVILLA]->(nintendo);
+(overwatch)-[:KUULUU]->(heroShooter),
+(overwatch)-[:KUULUU]->(multiplayer),
+(marvelRivals)-[:KUULUU]->(heroShooter),
+(marvelRivals)-[:KUULUU]->(multiplayer);
